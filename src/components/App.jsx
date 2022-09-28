@@ -16,6 +16,9 @@ export class App extends Component {
   };
 
   addContact = data => {
+    if(this.isDublicate(data)){
+      return alert(`Контакт ${data.name} з номером ${data.number} вже є в списку контактів`)
+    }
     this.setState(prev => {
       const newContact = {
         id: nanoid(),
@@ -37,6 +40,13 @@ export class App extends Component {
     })
 
   }
+
+isDublicate({name, number}) {
+  const {contacts} = this.state;
+  const result = contacts.find((contact) => contact.name === name && contact.number === number);
+  return result;
+}
+
 
   handleChange = e => {
     const { name, value } = e.target;
