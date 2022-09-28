@@ -40,9 +40,12 @@ export class FormAddContact extends Component {
             name="name"
             id={nameId}
             type="text"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             value={this.state.name}
             onChange={handleChange}
-            minLength={3}
+            
+            required
           />
         </div>
 
@@ -52,9 +55,12 @@ export class FormAddContact extends Component {
             name="number"
             id={numberId}
             type="tel"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             value={this.state.number}
             onChange={handleChange}
-            minLength={3}
+            
+            required
           />
         </div>
 
